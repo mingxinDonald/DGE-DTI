@@ -1,0 +1,37 @@
+model:
+  drug_hidden_dim: 256
+  target_hidden_dim: 256
+  interaction_hidden_dim: 512
+  output_dim: 128
+  dropout: 0.2
+
+drug_features:
+  morgan_radius: 2
+  morgan_bits: 2048
+  use_maccs: true
+
+target_features:
+  max_seq_length: 1000
+  embedding_dim: 128
+  use_amino_acid_composition: true
+
+training:
+  epochs: 100
+  batch_size: 64
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 15
+  val_split: 0.1
+  test_split: 0.1
+  seed: 42
+
+data:
+  data_path: "data/sample_data.csv"
+  drug_smiles_col: "drug_smiles"
+  target_sequence_col: "target_sequence"
+  label_col: "label"
+
+output:
+  model_dir: "outputs/models"
+  results_dir: "outputs/results"
+  log_dir: "outputs/logs"
